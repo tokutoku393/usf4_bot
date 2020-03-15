@@ -1,8 +1,6 @@
 'use strict';
 
-require('dotenv').config();
-
-const data = require(process.env.DIR + "src/characterList.js");
+const data = require("../src/characterList.js");
 const dataList = data.characterList;
 
 exports.getCharacter = function(req) {

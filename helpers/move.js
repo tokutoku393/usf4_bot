@@ -1,17 +1,15 @@
 'use strict';
 
-require("dotenv").config();
-
-const commonData = require(process.env.DIR + "src/commonList.js");
+const commonData = require("../src/commonList.js");
 const commonList = commonData.commonList;
 
-const skillData = require(process.env.DIR + "src/skillList.js");
+const skillData = require("../src/skillList.js");
 const skillList = skillData.skillList;
 
-const moveData = require(process.env.DIR + "src/moveList.js");
+const moveData = require("../src/moveList.js");
 const moveList = moveData.moveList;
 
-const moveNameResolve = require(process.env.DIR + "helpers/moveNameResolution.js");
+const moveNameResolve = require("../helpers/moveNameResolution.js");
 
 // TODO: 半角・全角・ひらがな・カタカナ
 exports.getMove = function(chara, req) {

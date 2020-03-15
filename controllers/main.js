@@ -1,11 +1,9 @@
 'use strict';
 
-require("dotenv").config();
-
-const LIST = require(process.env.DIR + 'helpers/list.js');
-const CHARACTER = require(process.env.DIR + 'helpers/character.js');
-const MOVE = require(process.env.DIR + 'helpers/move.js');
-const STATUS = require(process.env.DIR + 'helpers/status.js');
+const LIST = require('../helpers/list.js');
+const CHARACTER = require('../helpers/character.js');
+const MOVE = require('../helpers/move.js');
+const STATUS = require('../helpers/status.js');
 
 exports.getData = function(req) {
 	let mes = '';

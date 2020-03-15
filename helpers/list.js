@@ -1,14 +1,12 @@
 'use strict';
 
-require("dotenv").config();
-
-const commonData = require(process.env.DIR + "src/commonList.js");
+const commonData = require( "../src/commonList.js");
 const commonList = commonData.commonList;
 
-const skillData = require(process.env.DIR + "src/skillList.js");
+const skillData = require("../src/skillList.js");
 const skillList = skillData.skillList;
 
-const moveData = require(process.env.DIR + "src/moveList.js");
+const moveData = require("../src/moveList.js");
 const moveList = moveData.moveList;
 
 exports.getList = function (character) {
