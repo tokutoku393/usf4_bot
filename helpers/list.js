@@ -14,17 +14,27 @@ const moveList = moveData.moveList;
 exports.getList = function (character) {
 	let list = '';
 
+	list += '◾️通常技\n'
 	for (let i = 0, len = moveList[character].length; i < len; i++) {
-		list += `${moveList[i]}\n`;
+		if (i == len-1) {
+			list += `${moveList[character][i] } \n\n`;
+		} else {
+			list += `${moveList[character][i]}、`;
+		}
 	}
 
+	list += '◾️必殺技・特殊技\n';
 	for (const key in skillList[character]) {
-		list += `${key}\n`;
+		list += `${key}、`;
 	}
 
 	if (list !== '') {
 		for (const key in commonList) {
-			list += `${key}\n`;
+			if (key == Object.keys(commonList).pop()) {
+				list += key;
+			} else {
+				list += `${key}、`;
+			}
 		}
 	}
 	return list;
