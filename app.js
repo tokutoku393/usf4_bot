@@ -12,7 +12,9 @@ const config = {
 };
 
 const app = express();
-const data = require(process.env.DIR + 'controllers/main.js');
+const data = require('./controllers/main.js');
+
+app.get('/', (req, res) => res.send('Hello LINE BOT!(GET)'));
 
 app.post('/webhook', line.middleware(config), (req, res) => {
 	console.log(req.body.events);
