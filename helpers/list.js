@@ -13,7 +13,8 @@ const moveList = moveData.moveList;
 
 exports.getList = function (character) {
 	let list = '';
-	for (let i = 0, len = moveList[character].length; i > len; i++) {
+
+	for (let i = 0, len = moveList[character].length; i < len; i++) {
 		list += `${moveList[i]}\n`;
 	}
 
