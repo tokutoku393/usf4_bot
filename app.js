@@ -12,6 +12,7 @@ const config = {
 };
 
 const app = express();
+const data = require(process.env.DIR + 'controllers/main.js');
 
 app.post('/webhook', line.middleware(config), (req, res) => {
 	console.log(req.body.events);
@@ -34,7 +35,7 @@ function handleEvent(event) {
 		return Promise.resolve(null);
 	}
 
-	let mes = '';
+	const mes = data.getData(event.message.text);
 
 	return client.replyMessage(event.replyToken, {
 		type: 'text',
