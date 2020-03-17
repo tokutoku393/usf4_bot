@@ -26,7 +26,11 @@ exports.getData = function(req) {
 	// 一覧
 	if (character !== '' && req_arr[1] == '一覧') {
 		const list = LIST.getList(character);
-		mes += `${character}の技一覧\n\n${list}\n\n「${character} 技名」で性能を検索できます。`;
+		if (list[0] == '') {
+			mes += "データが未実装です。運営にお問い合わせください。";
+		} else {
+			mes += `${character}の技一覧\n\n◾️通常技\n${list[0]}\n\n◾️必殺技・特殊技\n${list[1]}\n\n「${character} 技名」で性能を検索できます。`;
+		}
 	}
 
 	// 技名を取得

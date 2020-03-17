@@ -10,30 +10,34 @@ const moveData = require("../src/moveList.js");
 const moveList = moveData.moveList;
 
 exports.getList = function (character) {
-	let list = '';
+	let list1 = '';
 
-	list += '◾️通常技\n'
-	for (let i = 0, len = moveList[character].length; i < len; i++) {
-		if (i == len-1) {
-			list += `${moveList[character][i] } \n\n`;
-		} else {
-			list += `${moveList[character][i]}、`;
-		}
-	}
-
-	list += '◾️必殺技・特殊技\n';
-	for (const key in skillList[character]) {
-		list += `${key}、`;
-	}
-
-	if (list !== '') {
-		for (const key in commonList) {
-			if (key == Object.keys(commonList).pop()) {
-				list += key;
+	if (moveList[character] !== 0) {
+		for (let i = 0, len = moveList[character].length; i < len; i++) {
+			if (i == len-1) {
+				list1 += `${moveList[character][i] } \n\n`;
 			} else {
-				list += `${key}、`;
+				list1 += `${moveList[character][i]}、`;
 			}
 		}
 	}
-	return list;
+
+	let list2 = '';
+	if (skillList[character] !== 0) {
+		for (const key in skillList[character]) {
+      		list2 += `${key}、`;
+    	}
+	}
+		
+	if (list2 !== '') {
+		for (const key in commonList) {
+			if (key == Object.keys(commonList).pop()) {
+				list2 += key;
+			} else {
+				list2 += `${key}、`;
+			}
+		}
+	}
+
+	return [list1, list2];
 }
