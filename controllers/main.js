@@ -51,7 +51,11 @@ exports.getData = function(req) {
 		} else {
 			mes += `${character} ${move}\n\n`;
 			for (const key in status) {
-				mes += `${key}: ${status[key]}\n`;
+				if (key == Object.keys(status).pop()) {
+					mes += `${key}: ${status[key]}`;	
+				} else {
+					mes += `${key}: ${status[key]}\n`;
+				}
 			}
 		}
 	}
