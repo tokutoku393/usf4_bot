@@ -7,7 +7,9 @@ const STATUS = require('../helpers/status.js');
 
 exports.getData = function(req) {
 	let mes = '';
-	const req_arr = req.split(/\s/);
+
+	const spl_req = req.split(/\s/);
+	const req_arr = [zenkaku2hankaku(spl_req[0]), zenkaku2hankaku(spl_req[1])];
 
 	// ヘルプ
 	if (req_arr[0] == 'ヘルプ') {
@@ -61,4 +63,10 @@ exports.getData = function(req) {
 	}
 
 	return mes;
+}
+
+const zenkaku2hankaku = function(str) {
+	return str.replace(/[Ａ-Ｚａ-ｚ０-９]/g, (s) => {
+		return String.fromCharCode(s.charCodeAt(0) - 0xfee0);
+	});
 }
