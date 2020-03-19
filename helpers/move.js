@@ -1,8 +1,5 @@
 'use strict';
 
-const commonData = require("../src/commonList.js");
-const commonList = commonData.commonList;
-
 const skillData = require("../src/skillList.js");
 const skillList = skillData.skillList;
 
@@ -15,23 +12,10 @@ const moveNameResolve = require("../helpers/moveNameResolution.js");
 exports.getMove = function(chara, req) {
 	let result = "";
 
-	// 共通技（投げ、セビ、スパコン、ウルコン）
-	if (!commonList[req]) {
-		for (const key in commonList) {
-			if (commonList[key].indexOf(req) >= 0) {
-				result += key;
-			}
-		}
-	} else {
-		result += req;
-	}
-
 	// 必殺技
-	if (!result) {
-		const skill = searchSkill(chara, req);
-		if (skill !== undefined) {
-			result += skill;
-		}
+	const skill = searchSkill(chara, req);
+	if (skill !== undefined) {
+		result += skill;
 	}
 
 	// 通常技

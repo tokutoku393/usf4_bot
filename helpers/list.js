@@ -1,8 +1,5 @@
 'use strict';
 
-const commonData = require( "../src/commonList.js");
-const commonList = commonData.commonList;
-
 const skillData = require("../src/skillList.js");
 const skillList = skillData.skillList;
 
@@ -25,18 +22,12 @@ exports.getList = function (character) {
 	let list2 = '';
 	if (skillList[character] !== 0) {
 		for (const key in skillList[character]) {
-      		list2 += `${key}、`;
-    	}
-	}
-		
-	if (list2 !== '') {
-		for (const key in commonList) {
-			if (key == Object.keys(commonList).pop()) {
+			if (key == Object.keys(skillList[character]).pop()) {
 				list2 += key;
 			} else {
 				list2 += `${key}、`;
 			}
-		}
+    	}
 	}
 
 	return [list1, list2];
